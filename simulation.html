@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Real-time Monitoring Map - Chemistry of Urban Air Pollution</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-timedimension/dist/leaflet.timedimension.control.min.css" />
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    #map { 
+      height: 600px; 
+    }
+.research-paragraphs {
+  margin-top: 20px;
+}
+
+.research-paragraph {
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.research-paragraph h4 {
+  margin-top: 0;
+  text-align: center; 
+}
+.city-image {
+  text-align: center; 
+  margin-bottom: 10px; 
+}
+
+.city-image img {
+  max-width: 100%; 
+  height: auto; 
+  display: block; 
+  margin: 0 auto 10px auto; 
+}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="logo">
+        <img src="images/Research Logo 2.png" alt="Research Group Logo">
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="research.html">Research</a></li> 
+          <li><a href="simulation.html">Real-time Monitoring Map</a></li>
+          <li><a href="quiz.html">Quiz</a></li>
+          <li><a href="resources.html">Educational Resources</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section id="simulation">
+    <div class="container">
+      <h2 style="font-family: 'Roboto', sans-serif; font-size: 2.5em;">Real-time Monitoring Map</h2>
+      <p style="font-family: 'Open Sans', sans-serif; font-size: 1.2em;">This interactive map visualizes simulated air pollution concentrations across different areas in the UAE. Explore how pollution levels vary over location.</p>
+  
+      <div id="map"></div>
+  
+      <div class="research-paragraph">
+        <div class="city-image">
+          <img src="images/dubai_pollution.jpg" alt="Dubai Pollution">
+        </div>
+        <h4>Dubai</h4>
+        <p>Dubai, a bustling metropolis known for its rapid development and high population density, faces significant air pollution challenges. The primary causes include vehicular emissions, construction activities, and industrial processes. To mitigate pollution, Dubai is investing in public transportation, promoting electric vehicles, and implementing stricter environmental regulations for industries.</p>
+      </div>
+      <div class="research-paragraph">
+        <div class="city-image">
+          <img src="images/sharjah_pollution.jpg" alt="Sharjah Pollution">
+        </div>
+        <h4>Sharjah</h4>
+        <p>Sharjah, a major industrial and residential hub, experiences air pollution from a combination of industrial emissions, traffic congestion, and desert dust. The presence of large industrial areas contributes significantly to air quality concerns. Sharjah is implementing measures such as promoting cleaner industrial technologies, improving waste management, and increasing green spaces to combat pollution.</p>
+      </div>
+      <div class="research-paragraph">
+        <div class="city-image">
+          <img src="images/al_ain_pollution.jpg" alt="Al Ain Pollution">
+        </div>
+        <h4>Al Ain</h4>
+        <p>Al Ain, an inland oasis city, faces unique air pollution challenges due to its desert environment and seasonal sandstorms. The primary sources of pollution include dust storms, vehicular emissions, and industrial activities. Al Ain is focusing on dust control measures, promoting sustainable transportation, and implementing afforestation projects to improve air quality.</p>
+      </div>
+      </div>
+    </div>
+  </section>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet-timedimension/dist/leaflet.timedimension.min.js"></script>
+  <script src="script.js"></script>
+  <script>
+    var map = L.map('map').setView([25.2048, 55.2708], 13); // Set Dubai coordinates and zoom level
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+    var pollutionData = [
+  //Sharjah And Dubai Location Data 
+  { location: [25.276987, 55.309251], severity: 'low' },     // Burj Khalifa
+  { location: [25.075353, 55.139795], severity: 'normal' },   // Dubai Marina
+  { location: [25.203890, 55.271158], severity: 'severe' },    // Deira
+  { location: [25.197197, 55.274187], severity: 'low' },     // Dubai Creek
+  { location: [25.258171, 55.303626], severity: 'normal' },   // Downtown Dubai
+  { location: [25.118889, 55.138056], severity: 'severe' },    // Jumeirah Beach Residence
+  { location: [25.0657, 55.141032], severity: 'low' },       // Palm Jumeirah
+  { location: [25.212222, 55.280556], severity: 'normal' },   // Al Karama
+  { location: [25.176389, 55.398611], severity: 'severe' },    // International City
+  { location: [25.253371, 55.365691], severity: 'low' },     // Dubai Festival City
+  { location: [25.071111, 55.186944], severity: 'normal' },   // Jumeirah Lakes Towers
+  { location: [25.107778, 55.165278], severity: 'severe' },    // The Greens
+  { location: [25.1275, 55.227222], severity: 'low' },       // Arabian Ranches
+  { location: [25.041389, 55.105278], severity: 'normal' },   // Dubai Media City
+  { location: [25.048611, 55.127778], severity: 'severe' },    // Internet City
+  { location: [25.160833, 55.218056], severity: 'low' },     // Al Barsha
+  { location: [25.230556, 55.325], severity: 'normal' },     // Business Bay
+  { location: [25.170833, 55.313056], severity: 'severe' },    // Al Quoz
+  { location: [25.228611, 55.373611], severity: 'low' },     // Mirdif
+  { location: [25.094444, 55.158333], severity: 'normal' },   // The Meadows
+  { location: [25.357336, 55.391979], severity: 'normal' },  // Sharjah City Centre
+  { location: [25.338352, 55.412117], severity: 'low' },    // Al Qasba
+  { location: [25.345139, 55.376944], severity: 'severe' },   // Al Majaz Waterfront
+  { location: [25.371667, 55.408333], severity: 'normal' },  // Sharjah Museum of Islamic Civilization
+  { location: [25.316667, 55.375], severity: 'low' },       // Sharjah Aquarium
+  { location: [25.341944, 55.428611], severity: 'severe' },   // Al Khan Beach
+  { location: [25.383333, 55.475], severity: 'normal' },   // University City
+  { location: [25.308333, 55.441667], severity: 'low' },    // Sharjah Desert Park
+  { location: [25.391667, 55.391667], severity: 'severe' },   // Al Nahda
+  { location: [25.325, 55.475], severity: 'normal' },      // Al Dhaid
+  { location: [25.358333, 55.441667], severity: 'low' },    // Industrial Area
+  { location: [25.308333, 55.391667], severity: 'severe' },   // Al Majaz
+  { location: [25.375, 55.366667], severity: 'normal' },    // Al Yarmook
+  { location: [25.333333, 55.35], severity: 'low' },        // Al Rolla
+  { location: [25.391667, 55.358333], severity: 'severe' },   // Muwailih
+  { location: [25.35, 55.325], severity: 'normal' },       // Al Nabba
+  { location: [25.408333, 55.325], severity: 'low' },     // Al Saja'a
+  { location: [25.366667, 55.483333], severity: 'severe' },   // Al Hamriyah
+  { location: [25.325, 55.5], severity: 'normal' },         // Khor Fakkan
+  { location: [25.391667, 55.516667], severity: 'low' },    // Dibba Al Hisn
+
+  // Al Ain Location Data
+  { location: [24.216667, 55.75], severity: 'normal' },      // Al Ain Oasis
+  { location: [24.233333, 55.766667], severity: 'low' },     // Al Ain Zoo
+  { location: [24.183333, 55.766667], severity: 'severe' },    // Al Jahili Fort
+  { location: [24.25, 55.783333], severity: 'normal' },     // Hili Archaeological Park
+  { location: [24.166667, 55.783333], severity: 'low' },      // Jebel Hafeet
+  { location: [24.2, 55.8], severity: 'severe' },          // Al Ain National Museum
+  { location: [24.266667, 55.75], severity: 'normal' },     // Al Ain Palace Museum
+  { location: [24.15, 55.8], severity: 'low' },         // Green Mubazzarah
+  { location: [24.283333, 55.766667], severity: 'severe' },    // Al Jimi Mall
+  { location: [24.133333, 55.766667], severity: 'normal' },   // Wadi Adventure
+  { location: [24.25, 55.816667], severity: 'low' },        // Al Ain University
+  { location: [24.183333, 55.8], severity: 'severe' },       // Higher Colleges of Technology
+  { location: [24.216667, 55.816667], severity: 'normal' },   // Al Ain Hospital
+  { location: [24.166667, 55.816667], severity: 'low' },     // Al Ain Mall
+  { location: [24.233333, 55.8], severity: 'severe' },      // Zakher City
+  { location: [24.2, 55.733333], severity: 'normal' },      // Al Maqam
+  { location: [24.266667, 55.8], severity: 'low' },        // Al Salamat
+  { location: [24.133333, 55.8], severity: 'severe' },      // Al Yahar
+  { location: [24.283333, 55.8], severity: 'normal' },     // Al Muwaiji
+  { location: [24.116667, 55.783333], severity: 'low' },     // Mazyad
+    ];
+function updatePollutionList() {
+  const pollutionList = document.getElementById('pollution-list');
+  const updates = getRandomPollutionUpdates();
+  pollutionList.innerHTML = updates.join('');
+}
+
+updatePollutionList(); // Initial update
+setInterval(updatePollutionList, 5000); // Update every 5 seconds
+function updatePollutionList() {
+  const pollutionList = document.getElementById('pollution-list');
+  const updates = getRandomPollutionUpdates();
+  pollutionList.innerHTML = updates.join('');
+}
+
+updatePollutionList(); // Initial update
+setInterval(updatePollutionList, 5000); // Update every 5 seconds
+
+// Add locationName to your pollutionData (sample data)
+pollutionData.forEach(function(data) {
+  // ... (your existing pollutionData) ...
+  data.locationName = getRandomLocationName(); // Replace with actual location names
+});
+
+function getRandomLocationName() {
+  // Sample location names (replace with your actual location names)
+  const locationNames = [
+    "Burj Khalifa", "Dubai Marina", "Deira", "Al Qasba", "Al Majaz Waterfront",
+    // ... add more location names
+  ];
+  return locationNames[Math.floor(Math.random() * locationNames.length)];
+}
+pollutionData.forEach((data, index) => {
+  data.locationName = locationNames[index];
+});
+    function addPollutionCircle(location, severity) {
+      var color;
+      switch (severity) {
+        case 'low':
+          color = 'lightred';
+          break;
+        case 'normal':
+          color = 'red';
+          break;
+        case 'severe':
+          color = 'darkred';
+          break;
+      }
+
+      L.circle(location, {
+        color: color,
+        fillColor: color,
+        fillOpacity: 0.5,
+        radius: 1000 
+      }).addTo(map);
+    }
+    pollutionData.forEach(function(data) {
+      addPollutionCircle(data.location, data.severity);
+    });
+    var timeDimension = new L.TimeDimension();
+    map.timeDimension = timeDimension; 
+    var timeDimensionControl = new L.Control.TimeDimension({
+      position: 'bottomleft',
+      autoPlay: true,
+      loopButton: true,
+      playerOptions: {
+        transitionTime: 1000,
+      }
+    });
+    map.addControl(timeDimensionControl);
+    var geoJsonLayer = L.geoJson(null, {
+      pointToLayer: function(feature, latlng) {
+        return L.circle(latlng, {
+          color: getPollutionColor(feature.properties.severity),
+          fillColor: getPollutionColor(feature.properties.severity),
+          fillOpacity: 0.5,
+          radius: 1000
+        });
+      }
+    });
+    var timeDimensionLayer = L.timeDimension.layer.geoJson(geoJsonLayer, {
+      updateTimeDimension: true,
+      duration: 'PT23H',
+      getFeatureBetweenDates: function(feature, minTime, maxTime) {
+        var featureTime = feature.properties.time * 3600;
+        if (featureTime >= minTime && featureTime <= maxTime) {
+          return feature;
+        }
+      }
+    });
+    timeDimensionLayer.addTo(map);
+    var geoJsonData = {
+      type: 'FeatureCollection',
+      features: pollutionData.map(function(data) {
+        return {
+          type: 'Feature',
+          properties: {
+            severity: data.severity,
+            time: data.time * 3600 
+          },
+          geometry: {
+            type: 'Point',
+            coordinates: data.location
+          }
+        };
+      })
+    };
+    geoJsonLayer.addData(geoJsonData);
+  </script>
+</body>
+</html>

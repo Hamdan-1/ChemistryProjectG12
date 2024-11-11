@@ -1,0 +1,275 @@
+/* Basic Styling */
+body {
+  font-family: sans-serif;
+  margin: 0;
+  background-color: #222;
+  color: #eee;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 20px;
+  overflow: hidden;
+}
+
+
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 5px 0;
+  display: flex;
+  align-items: center; 
+}
+
+.logo {
+  margin-right: auto; 
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+nav li {
+  display: inline-block;
+  margin-left: 20px;
+}
+
+.logo img {
+  max-width: 150px;
+  max-height: 150px;
+}
+nav {
+  float: none;
+  text-align: center;
+}
+#researcher {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #eedfb1;
+  opacity: 0;
+  animation: fade-in 1s ease-in-out forwards;
+  position: relative;
+  transition: opacity 1s ease-in-out;
+}
+#researcher .container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  text-align: center;
+}
+#research iframe {
+  display: block; /* Make the iframe a block element */
+  margin: 0 auto; /* Center the iframe horizontally */
+}
+#researcher::before,
+#researcher::after {
+  content: "";
+  position: absolute;
+  background-color: navy;
+  height: 30px; 
+  width: 100%;
+  left: 0;
+}
+#research h2 {
+  text-align: center;
+}
+#researcher .researcher-content {
+  display: flex;
+  width: 100%; 
+}
+#simulation h2, 
+#simulation p {
+  text-align: center;
+}
+#researcher .text-content {
+  flex: 1;
+  margin-right: 20px; 
+}
+.research-paragraphs {
+  margin-top: 20px;
+  display: flex; /* Use flexbox for layout */
+  justify-content: center; /* Center the boxes horizontally */
+  flex-wrap: wrap; /* Allow boxes to wrap */
+}
+
+.research-paragraph {
+  width: 30%; /* Adjust width as needed */
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center; /* Center the text within each box */
+}
+
+.city-image img {
+  max-width: 80%; /* Adjust image size as needed */
+  height: auto;
+  display: block;
+  margin: 0 auto 10px auto;
+}
+#researcher .image-content img {
+  max-width: 400px;
+  max-height: 400px;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+#researcher::before {
+  top: 0;
+}
+
+#researcher::after {
+  bottom: 0;
+}
+
+#close-researcher {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #ccc;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #007bff;
+}
+.researcher-title { /* New style for the title */
+  text-align: center; 
+  font-size: 2em; /* Adjust font size as needed */
+}
+
+#researcher .text-content p {
+  font-size: 1.2em; /* Adjust font size as needed */
+}
+#researcher .text-content h3,
+#researcher .text-content p {
+  color: #333; /* Dark text color */
+}
+#home {
+  background-image: url("images/background-strip.jpg"); /* Replace with your image path */
+  background-repeat: no-repeat;
+  background-position: center; /* Adjust position as needed */
+  background-size: cover; /* Adjust size as needed */
+}
+#home img {
+  max-width: 100%; /* Make sure the image doesn't overflow its container */
+  height: auto; /* Maintain aspect ratio */
+  display: block; /* Prevent image from affecting text flow */
+  margin: 20px auto; /* Center the image */
+}
+
+#home,
+#goals {
+  padding: 40px 0; /* Add some spacing around the sections */
+  text-align: center; /* Center the text content */
+}
+
+#goals {
+  background-color: #282828; /* Slightly lighter dark background */
+  color: #eee; /* Light text color */
+  font-family: 'Open Sans', sans-serif; /* Use the same font as the home section */
+}
+#goals ul {
+  list-style: none; /* Remove bullet points */
+  padding: 0;
+}
+.goals-content {
+  display: flex;
+  align-items: center; /* Align the text and video vertically */
+}
+
+.goals-text {
+  flex: 1; /* Allow the text to take up available space */
+  margin-right: 20px; /* Add some space between the text and video */
+}
+
+#goals li {
+  margin-bottom: 10px; /* Add spacing between list items */
+  text-align: left; /* Align list items to the left */
+} 
+#home h2 {
+  font-family: 'Roboto', sans-serif; /* Example modern font */
+  font-size: 3em; /* Increased font size */
+  margin-bottom: 10px; /* Add spacing below the heading */
+}
+
+#home p {
+  font-family: 'Open Sans', sans-serif; /* Example modern font */
+  font-size: 1.3em; /* Increased font size */
+  line-height: 1.6; /* Adjust line spacing for better readability */
+}
+.welcome-content {
+  display: flex;
+  align-items: center; /* Vertically align text and ASCII art */
+}
+
+.welcome-text {
+  flex: 1; /* Allow text to take up available space */
+  margin-right: 20px; /* Add spacing between text and ASCII art */
+}
+
+.ascii-art {
+  font-family: monospace; /* Use a monospace font for ASCII art */
+  white-space: pre; /* Preserve spaces and line breaks */
+}
+.home-content {
+  display: flex;
+  align-items: center; /* Vertically align text and image */
+}
+
+.home-content .text-content {
+  flex: 1; /* Allow text content to grow and take available space */
+  margin-right: 20px; /* Add some space between text and image */
+  font-size: 1.25em; /* Adjust the value as needed */
+}
+
+.home-content .image-content {
+  flex-shrink: 0; /* Prevent image from shrinking */
+}
+.home-content .image-content img {
+  max-width: 300px; /* Adjust the value as needed */
+  max-height: 300px; /* Adjust the value as needed */
+}
+#call-to-action {
+  text-align: center;
+  padding: 40px 0;
+  color: #eee; /* Light text color */
+  background-color: #282828; /* Slightly lighter dark background */
+  font-family: 'Open Sans', sans-serif; /* Use the same font as other sections */
+}
+
+.explore-links {
+  margin-top: 20px;
+}
+
+.explore-button {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 10px;
+  background-color: #007bff; /* Example button color */
+  color: white;
+  text-decoration: none;
+  border-radius: 5px; /* Add rounded corners */
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.explore-button:hover {
+  background-color: #0056b3; /* Darker color on hover */
+}
+#map {
+  height: 600px; /* Adjust this value to your desired height */
+}
